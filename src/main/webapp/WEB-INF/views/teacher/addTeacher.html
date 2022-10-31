@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add teacher</title>
+</head>
+<body>
+<form th:action="@{saveTeachet}"
+      th:object="${teacher}"
+      th:method="POST"
+      style="text-align:center; margin-top:200px; font-size: 30px;">
+    <input type="hidden" name = "id" th:field="*{id}">
+    <input type="text"  name="teacher Name" th:field="*{lastName}" placeholder="teacher Name">
+    <input type="text"  name="teacher first name" th:field="*{firstName}" placeholder="teacher first name">
+    <br><br>
+    <input type="text"  name="teacher email" th:field="*{email}" placeholder="teacher email">
+    <br><br>
+    <select th:field="${teacher.courseId}">
+        <option th:each="course:${courseList}"
+                th:value="${course.getId()}"
+                th:text="${course.getCourseName()}"></option>
+    </select>
+    <input type="submit" value="Add">
+
+</form>
+
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>add</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<form class="form" th:method="post"  th:action="@{/teachers/saveTeachet}" th:object="${teacher}">-->
+
+<!--    <input type="hidden" name="companyId" th:field="*{id}" placeholder="company Id">-->
+<!--    <label>-->
+<!--        <input type="text" name="teacher Name" th:field="*{firstName}" placeholder="teacher Name">-->
+<!--    </label>-->
+<!--    <br><br>-->
+<!--    <label>-->
+<!--        <input type="text" name="teacher last name" th:field="*{lastName}" placeholder="last name">-->
+<!--    </label>-->
+<!--    <br><br>-->
+<!--    <label>-->
+<!--        <input type="text" name="teacher email" th:field="*{email}" placeholder="teacher email">-->
+<!--    </label>-->
+<!--    <br><br>-->
+<!--    <select th:field="${teacher.courseId}">-->
+<!--        <option th:each="course:${courseList}"-->
+<!--                th:value="${course.getId()}"-->
+<!--                th:text="${course.getCourseName()}"></option>-->
+<!--    </select>-->
+<!--    <input type="submit" value="Add techer">-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->

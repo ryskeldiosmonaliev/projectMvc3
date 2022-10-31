@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>update</title>
 </head>
-<body>
-<form
-        action="#"
-        th:action="@{/saveUpdateCompany}"
-        th:object="${company}"
-        method="post"
-        style="text-align:center; margin-top:200px; font-size: 30px;">
 
-    <input type="hidden" name = "id" th:field="*{id}">
-    <input type="text"  name="companyName" th:field="*{companyName}" placeholder="Company Name">
+<body>
+
+<form class="form" th:method="patch" th:action="@{/companies/companyUpdate}" th:object="${company}">
+    <input type="hidden" name="companyId" th:field="*{id}" placeholder="company Id">
+    <label>
+        <input class="companyname" type="text" name="companyName" th:field="*{companyName}" placeholder="Company Name">
+    </label>
     <br><br>
-    <input type="text"  name="locatedCountry" th:field="*{locatedCountry}" placeholder="Located Country">
+    <label>
+        <input type="text" name="locatedCountry" th:field="*{locatedCountry}" placeholder="Located Country">
+    </label>
     <br><br>
     <input type="submit" value="Update">
 </form>
-</div>
 </body>
 </html>

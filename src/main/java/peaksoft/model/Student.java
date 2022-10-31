@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import peaksoft.StudyFormat;
 
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.List;
-
 
 
 @Getter@Setter
@@ -41,7 +38,13 @@ public class Student {
     private String lastName;
 
 
-    @Column(name = "student_format")
+    @Enumerated
     private StudyFormat studyFormat;
+
+    @Transient
+    private Long groupId;
+
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.REMOVE})
+    private Group group;
 }
 

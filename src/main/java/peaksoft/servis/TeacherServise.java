@@ -1,12 +1,12 @@
-package peaksoft.dao;
+package peaksoft.servis;
 
 import peaksoft.model.Teacher;
 
 import java.util.List;
 
-public interface TeacherDao {
+public interface TeacherServise {
     List<Teacher> getAllTeachers();
-    void saveTeacher(Teacher teacher,Long courseId);
+    void saveTeacher(Teacher teacher,Long id);
     Teacher getTeacherById(Long id);
     void deleteTeacher(Teacher teacher);
     void updateTeacher(Teacher teacher,Long id);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
+<button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
+<button type="button" class="btn btn-outline-danger" th:href="@{/groups}"><a th:href="@{/groups}">Groups</a></button>
+<button type="button" class="btn btn-outline-warning" th:href="@{/students}"><a th:href="@{/students}">Students</a></button>
+<br>
+<table >
+    <thead>
+    <tr>
+        <th> Id</th>
+        <th >Name</th>
+        <th >Last Name</th>
+        <th >Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="teacher:${teachers}">
+        <td>
+            <p th:text="${teacher.id}"></p>
+        </td>
+        <td>
+            <p th:text="${teacher.firstName}"></p>
+        </td>
+        <td>
+            <p th:text="${teacher.lastName}"></p>
+        </td>
+        <td>
+            <p th:text="${teacher.email}"></p>
+        </td>
+
+        <td>
+            <a th:href="@{/teachers/{id}/update(id=${teacher.getId()})}">update</a>
+        </td>
+        <td><form th:method="DELETE" th:action="@{/teachers/{id}(id=${teacher.getId()})}">
+            <input type="submit" value="delete"/></form></td>
+
+    </tr>
+    </tbody>
+</table>
+<a href="/teachers/addTeacher"><input type="button" value="Add Teacher"></a>
+
+</body>
+</html>

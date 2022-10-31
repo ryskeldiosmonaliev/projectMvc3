@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+
+<form class="form" th:method="post" th:action="@{/courses/saveCourse}" th:object="${course}">
+
+    <input type="hidden" name="companyId" th:field="*{id}" placeholder="company Id">
+    <label>
+        <input type="text" name="companyName" th:field="*{courseName}" placeholder="Company Name">
+    </label>
+    <br><br>
+    <label>
+        <input type="text" name="locatedCountry" th:field="*{durationMonth}" placeholder="Located Country">
+    </label>
+    <br><br>
+    <select th:field="${course.companyId}">
+        <option th:each="company:${companyList}"
+                th:value="${company.getId()}"
+                th:text="${company.getCompanyName()}"></option>
+    </select>
+    <input type="submit" value="Add course">
+</form>
+
+</body>
+</html>

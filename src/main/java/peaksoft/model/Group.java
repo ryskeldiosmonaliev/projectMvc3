@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "companies")
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,20 @@ public class Group {
     private String groupName;
 
     @Column(name = "date_of_start")
-    private LocalDate dateOfStart;
+    private String dateOfStart;
 
     @Column(name = "date_of_finish")
-    private  LocalDate dateOfFinish;
+    private  String dateOfFinish;
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH,CascadeType.REMOVE,CascadeType.MERGE})
+    @JoinTable(name = "course_group",
+            joinColumns = @JoinColumn(name = "groups_id"),
+            inverseJoinColumns = @JoinColumn(name = "courses_id"))
+    List<Course>courses;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "group")
+    List<Student>students;
+
+    @Transient
+    private Long courseId;
 }
