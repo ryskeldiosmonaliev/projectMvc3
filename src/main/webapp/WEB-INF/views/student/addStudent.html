@@ -16,12 +16,12 @@
     <input type="text" th:field="*{lastName}" placeholder="last name">
     <input type="text" th:field="*{email}" placeholder="email">
     <div class="radio-button" >
-        <input type="radio"  value="ONLINE" th:field="*{studyFormat}"
-               id="onlineFormat">
-        <label for="onlineFormat">ONLINE</label>
-        <input type="radio" value="OFFLINE" th:field="*{studyFormat}"
-               id="offlineFormat">
-        <label for="offlineFormat">OFFLINE</label>
+        <label> OFFLINE
+            <input type="checkbox" th:value="OFFLINE" th:field="*{studyFormat}">
+        </label>
+        <label> ONNLINE
+            <input type="checkbox" th:value="ONLINE" th:field="*{studyFormat}">
+        </label>
     </div>
     <select th:field="${student.groupId}">
         <option th:each="group:${listGroups}"

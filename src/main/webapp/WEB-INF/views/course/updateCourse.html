@@ -17,6 +17,12 @@
         <input type="text" name="durationMonth" th:field="*{durationMonth}" placeholder="durationMonth">
     </label>
     <br><br>
+    <select th:field="${course.companyId}">
+        <option th:each="company:${companyList}"
+                th:value="${company.getId()}"
+                th:text="${company.getCompanyName()}"></option>
+    </select>
+    <br><br>
     <input type="submit" value="Update">
 </form>
 </body>

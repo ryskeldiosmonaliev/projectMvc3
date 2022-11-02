@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
 <button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
@@ -12,15 +11,6 @@
 <button type="button" class="btn btn-outline-warning" th:href="@{/students}"><a th:href="@{/students}">Students</a></button>
 <br>
 <table >
-    <tr>
-        <th >Id</th>
-        <th >Name</th>
-        <th >Duration Month</th>
-        <th >Company</th>
-        <th >Groups</th>
-    </tr>
-
-    <tbody>
     <div th:each="course:${courses}">
         <br>
         <p  th:text="${course.id}"></p>
@@ -40,11 +30,11 @@
         <td><form th:method="DELETE" th:action="@{/courses/{id}(id=${course.getId()})}">
             <input type="submit" value="delete"/></form></td>
     </div>
-    </tbody>
+
 </table>
+
+</table>
+
 <a href="/courses/addCourse"><input type="submit" class="btn btn danger" value="Add course"></a>
-
-</table>
-
 </body>
 </html>

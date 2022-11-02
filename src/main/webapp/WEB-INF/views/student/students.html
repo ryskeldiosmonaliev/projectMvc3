@@ -5,15 +5,12 @@
     <title>Student Page</title>
 </head>
 <body>
+<button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
+<button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
+<button type="button" class="btn btn-outline-success" th:href="@{/groups}"> <a th:href= "@{/groups}">Group</a></button>
+<button type="button" class="btn btn-outline-danger" th:href="@{/teachers}"><a th:href="@{/teachers}">Teachers</a></button>
+<button type="button" class="btn btn-outline-warning" th:href="@{/students}"><a th:href="@{/students}">Students</a></button>
 <table >
-    <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Study format</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
     <tr th:each="student:${students}">
         <td th:text="${student.firstName}"></td>
         <td th:text="${student.lastName}"></td>
@@ -27,9 +24,10 @@
             <input type="submit" value="delete" style="height: 30px; width: 80px; background-color:red;"/></form></td>
     </tr>
 </table>
-<br><br><br><br>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Student"
-       onclick="window.location.href = 'students/addStudent'">
+<br><br>
+
+<a href="/students/addStudent"><input type="submit" class="btn btn danger" value="Add Student"></a>
+
 
 </body>
 </html>
