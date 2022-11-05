@@ -50,18 +50,19 @@ public class GroupController {
         return "redirect:/groups";
     }
 
-    @GetMapping("/{id}/update")
-    public String updateCompany(Model model, @PathVariable("id") long id) {
-        model.addAttribute("groupUpdate", groupService.getGroupById(id));
+
+    @GetMapping("/updateGroup/{id}")
+    public String updateGroup(@PathVariable Long id, Model model) {
+        Group groups = groupService.getGroupById(id);
+        model.addAttribute("group", groups);
         return "group/updateGroup";
     }
 
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("groupUpdate") Group group,
-                         @PathVariable("id") long id) {
-        groupService.updateGroup(group, id);
-        return "redirect:/groups";
-    }
+    @PatchMapping("/saveUpdateGroup")
+    public String saveUpdateGroup(@ModelAttribute("group") Group groups) {
+        groupService.updateGroup(groups,groups.getCourseId()
+        );
+        return "redirect:/groups";}
 
     @DeleteMapping("/{id}")
     public String deleteGroup(@PathVariable("id") Long id) {

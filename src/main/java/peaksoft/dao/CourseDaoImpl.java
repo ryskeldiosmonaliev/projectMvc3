@@ -47,7 +47,7 @@ public class CourseDaoImpl implements CourseDao{
     }
 
     @Override
-    public void updateCourse(Course course, long id) {
+    public void updateCourse(Course course) {
         entityManager.merge(course);
     }
 

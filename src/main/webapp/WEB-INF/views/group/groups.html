@@ -20,7 +20,7 @@
         <td  ><a th:href="@{/groups/courses/{groupId}(groupId=${group.getId()})}">Courses</a></td>
 
         <td>
-            <a th:href="@{/groups/{id}/update(id=${group.getId()})}">update</a>
+            <a th:href="@{/groups/updateGroup/{id}(id=${group.id})}">update</a>
         </td>
         <td><form th:method="DELETE" th:action="@{/groups/{id}(id=${group.getId()})}">
             <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>

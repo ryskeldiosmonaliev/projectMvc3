@@ -24,8 +24,6 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty(message = "grup name should not be empty")
-    @Size(min = 2, max = 30, message = "grup name should be between 2 and 30 characters")
     @Column(name = "group_name")
     private String groupName;
 
@@ -35,13 +33,13 @@ public class Group {
     @Column(name = "date_of_finish")
     private  String dateOfFinish;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH,CascadeType.REMOVE,CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REFRESH})
     @JoinTable(name = "course_group",
             joinColumns = @JoinColumn(name = "groups_id"),
             inverseJoinColumns = @JoinColumn(name = "courses_id"))
     List<Course>courses;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "group")
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE,CascadeType.REFRESH},mappedBy = "groups")
     List<Student>students;
 
     @Transient

@@ -9,8 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-
+import java.util.List;
 
 
 @Getter@Setter
@@ -33,10 +32,21 @@ public class Course {
     @Column(name = "duration_month")
     private String durationMonth;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE,CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "company_id")
     private Company company;
 
+
     @Transient
     private Long companyId;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
+    @JoinTable(name = "groups_courses", joinColumns = @JoinColumn(name = "courses_id")
+            , inverseJoinColumns = @JoinColumn(name = "groups_id"))
+    private List<Group> groups;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "teachers_courses",joinColumns = @JoinColumn(name = "courses_id")
+            , inverseJoinColumns = @JoinColumn(name = "teachers_id"))
+    private Teacher teacher;
 }

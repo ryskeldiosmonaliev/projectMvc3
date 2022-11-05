@@ -25,54 +25,45 @@ public class CourseControll {
 
 
     @ModelAttribute("companyList")
-    public List<Company>getAllCompany(){
+    public List<Company> getAllCompany() {
         return companyService.getAllCompanies();
     }
-
-
     @GetMapping()
     public String getAllCourses( Model model){
-        model.addAttribute("courses",coursesService.getAllCourse());
+        List<Course> courses = coursesService.getAllCourse();
+        model.addAttribute("courses",courses);
         return "course/courses";
-
     }
-
     @GetMapping("/addCourse")
     public String addCourse(Model model){
         model.addAttribute("course",new Course());
         return "course/addCourse";
     }
-
     @PostMapping("/saveCourse")
     public String saveCourse(@ModelAttribute("course") Course course){
         coursesService.addCourse(course,course.getCompanyId());
         return "redirect:/courses";
     }
 
-    @GetMapping("/{id}/updateCourse")
-    public String updateCourse(@PathVariable("id") Long id, Model model){
+    @GetMapping("/updateCourse")
+    public String updateCourse(@RequestParam("courseId") Long id, Model model){
         Course course =  coursesService.getCourseById(id);
         model.addAttribute("course", course);
         return "course/updateCourse";
     }
 
-    @PatchMapping ("/{id}")
-    public String saveUpdateCourse(@PathVariable("id") Long id,@ModelAttribute("course") Course course){
-        coursesService.updateCourse(course,id);
+    @PostMapping("/saveUpdateCourse")
+    public String saveUpdateCourse(@RequestParam("companyId") Long id,@ModelAttribute("course") Course course){
+        course.setCompany(companyService.getCompanyById(id));
+        coursesService.updateCourse(course);
         return "redirect:/courses";
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteCourse(@PathVariable("id")Long id){
+    @DeleteMapping("/deleteCourse")
+    public String deleteCourse(@RequestParam("courseId") Long id ){
         coursesService.deleteCourse(coursesService.getCourseById(id));
         return "redirect:/courses";
     }
-    @GetMapping("/groups/{courseId}")
-    public String getCourses(@PathVariable("courseId")Long courseId,Model model){
-        List<Group>groups;
-        groups=coursesService.getGroupsByCourse(courseId);
-        model.addAttribute("groups",groups);
-        return "course/getGroups";
-    }
+
 
 }

@@ -25,9 +25,9 @@
         </td>
         <td>
         <td>
-            <a th:href="@{/courses/{id}/updateCourse(id=${course.getId()})}">update</a>
+            <a th:href="@{/courses/updateCourse(courseId=${course.id})}">update</a>
         </td>
-        <td><form th:method="DELETE" th:action="@{/courses/{id}(id=${course.getId()})}">
+        <td><form th:action="@{/courses/deleteCourse(courseId=${course.id})} " th:method="delete" >
             <input type="submit" value="delete"/></form></td>
     </div>
 

@@ -44,7 +44,8 @@ public class Student {
     @Transient
     private Long groupId;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.REMOVE})
-    private Group group;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH})
+    @JoinColumn(name = "groups_id")
+    private Group groups;
 }
 

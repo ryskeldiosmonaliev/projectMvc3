@@ -10,7 +10,7 @@ public interface CourseService {
 
     void addCourse(Course course, Long companyId);
     Course getCourseById(Long id);
-    void updateCourse(Course course, long id);
+    void updateCourse(Course course);
     void deleteCourse(Course course);
     List<Group>getGroupsByCourse(Long courseId);
 }

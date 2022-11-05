@@ -29,7 +29,10 @@ public class Teacher {
     private String lastName;
     @Column
     private String email;
-    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE})
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "teachers_courses", joinColumns = @JoinColumn(name = "teachers_id")
+            , inverseJoinColumns = @JoinColumn(name = "courses_id"))
     private Course course;
 
     @Transient

@@ -2,28 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>update</title>
+    <title>Update Course</title>
 </head>
-
-<body>
-
-<form class="form" th:method="patch" th:action="@{/courses/{id}(id=${course.getId()})}" th:object="${course}">
-    <input type="hidden" name="courseId" th:field="*{id}" placeholder="course Id">
-    <label>
-        <input class="coursename" type="text" name="courseName" th:field="*{courseName}" placeholder="Course Name">
-    </label>
+<body >
+<form
+        action="#"
+        th:action="@{saveUpdateCourse}"
+        th:object="${course}"
+        method="post">
+    <input type="hidden" name = "id" th:field="*{id}">
+    <input class="from_input" type="text"  name="courseName" th:field="*{courseName}" placeholder="Course name">
     <br><br>
-    <label>
-        <input type="text" name="durationMonth" th:field="*{durationMonth}" placeholder="durationMonth">
-    </label>
+    <input class="from_input" type="text"  name="Mouth" th:field="*{durationMonth}" placeholder="Mouth">
     <br><br>
     <select th:field="${course.companyId}">
         <option th:each="company:${companyList}"
                 th:value="${company.getId()}"
                 th:text="${company.getCompanyName()}"></option>
     </select>
-    <br><br>
-    <input type="submit" value="Update">
+    <input class="from_button" type="submit" value="Update">
 </form>
 </body>
 </html>

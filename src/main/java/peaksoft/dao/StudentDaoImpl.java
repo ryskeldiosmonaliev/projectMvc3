@@ -39,7 +39,7 @@ public class StudentDaoImpl implements StudentDao{
         Group group=groupDAO.getGroupById(id);
         List<Student>students=new ArrayList<>();
         students.add(student);
-        student.setGroup(group);
+        student.setGroups(group);
         group.setStudents(students);
         entityManager.persist(student);
 

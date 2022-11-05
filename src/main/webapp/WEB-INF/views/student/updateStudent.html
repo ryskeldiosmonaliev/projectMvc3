@@ -35,12 +35,12 @@
         <input th:field="${updateStudent.email}" class="form-group">
 
         <div class="radio-button">
-            <input type="radio" value="ONLINE" th:field="*{studyFormat}"
-                   id="onlineFormat">
-            <label for="onlineFormat">ONLINE</label>
-            <input type="radio" value="OFFLINE" th:field="*{studyFormat}"
-                   id="offlineFormat">
-            <label for="offlineFormat">OFFLINE</label>
+            <label> OFFLINE
+                <input type="checkbox" th:value="OFFLINE" th:field="*{studyFormat}">
+            </label>
+            <label> ONLINE
+                <input type="checkbox" th:value="ONNLINE" th:field="*{studyFormat}">
+            </label>
         </div>
         <button type="submit" value="Update" class="btn btn-primary">Update</button>
     </form>
