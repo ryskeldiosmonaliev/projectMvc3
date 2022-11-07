@@ -5,7 +5,7 @@
     <title>update</title>
 </head>
 
-<body>
+<body style="text-align: center">
 
 <form class="form" th:method="patch" th:action="@{/companies/companyUpdate}" th:object="${company}">
     <input type="hidden" name="companyId" th:field="*{id}" placeholder="company Id">

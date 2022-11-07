@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>All groups</title>
 </head>
-<body>
+<body style="text-align: center">
 <button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
 <button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
 <button type="button" class="btn btn-outline-danger" th:href="@{/teachers}"><a th:href="@{/teachers}">Teachers</a></button>
@@ -20,7 +20,7 @@
         <td  ><a th:href="@{/groups/courses/{groupId}(groupId=${group.getId()})}">Courses</a></td>
 
         <td>
-            <a th:href="@{/groups/updateGroup/{id}(id=${group.id})}">update</a>
+            <a th:href="@{/groups/updateGroup/{id}(id=${group.getId()})}">update</a>
         </td>
         <td><form th:method="DELETE" th:action="@{/groups/{id}(id=${group.getId()})}">
             <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>

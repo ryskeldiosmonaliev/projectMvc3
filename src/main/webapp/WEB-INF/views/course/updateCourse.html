@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <title>Update Course</title>
 </head>
-<body >
-<form
-        action="#"
-        th:action="@{saveUpdateCourse}"
-        th:object="${course}"
-        method="post">
-    <input type="hidden" name = "id" th:field="*{id}">
-    <input class="from_input" type="text"  name="courseName" th:field="*{courseName}" placeholder="Course name">
-    <br><br>
-    <input class="from_input" type="text"  name="Mouth" th:field="*{durationMonth}" placeholder="Mouth">
-    <br><br>
-    <select th:field="${course.companyId}">
-        <option th:each="company:${companyList}"
-                th:value="${company.getId()}"
-                th:text="${company.getCompanyName()}"></option>
-    </select>
-    <input class="from_button" type="submit" value="Update">
+<body style="text-align: center">
+<form class="form" th:method="post" th:action="@{/courses/saveUpdateCourse}" th:object="${course}">
+
+<input type="hidden" name="companyId" th:field="*{id}" placeholder="company Id">
+<label>
+    <input type="text" name="courseName" th:field="*{courseName}" placeholder="Course name">
+</label>
+<br><br>
+<label>
+    <input type="text" name="Mouth" th:field="*{durationMonth}" placeholder="Mouth">
+</label>
+<br><br>
+<select th:field="${course.companyId}">
+    <option th:each="company:${companyList}"
+            th:value="${company.getId()}"
+            th:text="${company.getCompanyName()}"></option>
+</select>
+<input type="submit" value="Add course">
 </form>
 </body>
 </html>

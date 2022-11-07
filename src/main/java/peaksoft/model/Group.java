@@ -33,13 +33,13 @@ public class Group {
     @Column(name = "date_of_finish")
     private  String dateOfFinish;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinTable(name = "course_group",
             joinColumns = @JoinColumn(name = "groups_id"),
             inverseJoinColumns = @JoinColumn(name = "courses_id"))
     List<Course>courses;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE,CascadeType.REFRESH},mappedBy = "groups")
+    @OneToMany(cascade = {CascadeType.ALL},mappedBy = "groups")
     List<Student>students;
 
     @Transient

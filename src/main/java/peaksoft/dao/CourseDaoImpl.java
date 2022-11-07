@@ -53,7 +53,7 @@ public class CourseDaoImpl implements CourseDao{
 
     @Override
     public void deleteCourse(Course course) {
-        entityManager.merge(entityManager.contains(course)?course:entityManager.merge(course));
+        entityManager.remove(entityManager.contains(course)?course:entityManager.merge(course));
 
     }
 

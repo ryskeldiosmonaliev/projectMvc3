@@ -32,21 +32,22 @@ public class Course {
     @Column(name = "duration_month")
     private String durationMonth;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
     @JoinColumn(name = "company_id")
     private Company company;
 
 
     @Transient
-    private Long companyId;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
+  private Long CompanyId;
+    @ManyToMany( cascade = {CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
     @JoinTable(name = "groups_courses", joinColumns = @JoinColumn(name = "courses_id")
             , inverseJoinColumns = @JoinColumn(name = "groups_id"))
     private List<Group> groups;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
     @JoinTable(name = "teachers_courses",joinColumns = @JoinColumn(name = "courses_id")
             , inverseJoinColumns = @JoinColumn(name = "teachers_id"))
     private Teacher teacher;
+
+
 }
