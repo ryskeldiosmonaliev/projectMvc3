@@ -12,7 +12,8 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 
-@Getter@Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -32,21 +33,20 @@ public class Course {
     @Column(name = "duration_month")
     private String durationMonth;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "company_id")
     private Company company;
 
 
     @Transient
-  private Long CompanyId;
-    @ManyToMany( cascade = {CascadeType.REFRESH,CascadeType.DETACH,CascadeType.MERGE})
+    private Long CompanyId;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "groups_courses", joinColumns = @JoinColumn(name = "courses_id")
             , inverseJoinColumns = @JoinColumn(name = "groups_id"))
     private List<Group> groups;
 
-    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.MERGE,CascadeType.DETACH})
-    @JoinTable(name = "teachers_courses",joinColumns = @JoinColumn(name = "courses_id")
-            , inverseJoinColumns = @JoinColumn(name = "teachers_id"))
+    @OneToOne(cascade = {CascadeType.ALL},mappedBy = "course")
     private Teacher teacher;
 
 

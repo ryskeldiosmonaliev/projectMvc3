@@ -65,9 +65,11 @@ public class TeacherController {
         return "redirect:/teachers";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
+        System.out.println("teacher before delete " + teacherService.getTeacherById(id).getEmail());
         teacherService.deleteTeacher(teacherService.getTeacherById(id));
+        System.out.println("teacher after delete " + teacherService.getTeacherById(id).getEmail());
         return "redirect:/teachers";
     }
 }

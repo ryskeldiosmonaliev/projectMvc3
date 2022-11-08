@@ -32,6 +32,6 @@ public class Company {
     @Column(name = "located_country")
     private String locatedCountry;
     @OneToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.REFRESH},mappedBy = "company")
+            cascade = {CascadeType.ALL},mappedBy = "company")
     private List<Course>courses;
 }

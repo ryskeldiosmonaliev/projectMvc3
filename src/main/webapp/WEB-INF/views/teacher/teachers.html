@@ -6,18 +6,20 @@
 
 </head>
 <body>
-<button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
-<button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
+<button type="button" class="btn btn-outline-primary"><a th:href="@{/companies}">Company</a></button>
+<button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href="@{/courses}">Course</a>
+</button>
 <button type="button" class="btn btn-outline-danger" th:href="@{/groups}"><a th:href="@{/groups}">Groups</a></button>
-<button type="button" class="btn btn-outline-warning" th:href="@{/students}"><a th:href="@{/students}">Students</a></button>
+<button type="button" class="btn btn-outline-warning" th:href="@{/students}"><a th:href="@{/students}">Students</a>
+</button>
 <br>
-<table >
+<table>
     <thead>
     <tr>
         <th> Id</th>
-        <th >Name</th>
-        <th >Last Name</th>
-        <th >Email</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
     </tr>
     </thead>
     <tbody>
@@ -38,8 +40,11 @@
         <td>
             <a th:href="@{/teachers/{id}/update(id=${teacher.getId()})}">update</a>
         </td>
-        <td><form th:method="DELETE" th:action="@{/teachers/{id}(id=${teacher.getId()})}">
-            <input type="submit" value="delete"/></form></td>
+        <td>
+            <form  th:action="@{/teachers/delete/{id}(id=${teacher.getId()})}" th:method="delete" >
+                <input type="submit" value="delete"/>
+            </form>
+        </td>
 
     </tr>
     </tbody>

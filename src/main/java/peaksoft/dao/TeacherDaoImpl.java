@@ -46,7 +46,7 @@ public class TeacherDaoImpl  implements TeacherDao{
 
     @Override
     public void deleteTeacher(Teacher teacher) {
-        entityManager.remove(entityManager.contains(teacher)?teacher:entityManager.merge(teacher));
+        entityManager.remove(entityManager.contains(teacher) ? teacher:entityManager.merge(teacher));
 
     }
 
