@@ -38,7 +38,7 @@ public class Student {
     private String lastName;
 
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StudyFormat studyFormat;
 
     @Transient

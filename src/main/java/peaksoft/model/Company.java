@@ -31,7 +31,7 @@ public class Company {
     @Size(min = 2, max = 30, message = "country should be between 2 and 30 characters")
     @Column(name = "located_country")
     private String locatedCountry;
-    @OneToMany(fetch = FetchType.LAZY,
+    @OneToMany(fetch = FetchType.EAGER,
             cascade = {CascadeType.ALL},mappedBy = "company")
     private List<Course>courses;
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Transactional
 public class TeacherDaoImpl  implements TeacherDao{
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     private final CourseDao courseDAO;
 
@@ -46,8 +46,7 @@ public class TeacherDaoImpl  implements TeacherDao{
 
     @Override
     public void deleteTeacher(Teacher teacher) {
-        entityManager.remove(entityManager.contains(teacher) ? teacher:entityManager.merge(teacher));
-
+        entityManager.remove(entityManager.contains(teacher)?teacher:entityManager.merge(teacher));
     }
 
     @Override
@@ -57,6 +56,5 @@ public class TeacherDaoImpl  implements TeacherDao{
         teacher1.setLastName(teacher.getLastName());
         teacher1.setEmail(teacher.getEmail());
         entityManager.merge(teacher1);
-
     }
 }

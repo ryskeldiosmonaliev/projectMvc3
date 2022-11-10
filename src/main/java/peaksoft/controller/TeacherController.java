@@ -66,8 +66,8 @@ public class TeacherController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id) {
-        System.out.println("teacher before delete " + teacherService.getTeacherById(id).getEmail());
+    public String delete(@PathVariable Long id) {
+        System.out.println("teacher before delete " + teacherService.getTeacherById(id).toString());
         teacherService.deleteTeacher(teacherService.getTeacherById(id));
         System.out.println("teacher after delete " + teacherService.getTeacherById(id).getEmail());
         return "redirect:/teachers";

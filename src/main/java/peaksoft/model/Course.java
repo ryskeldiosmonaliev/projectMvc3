@@ -41,13 +41,11 @@ public class Course {
     @Transient
     private Long CompanyId;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinTable(name = "groups_courses", joinColumns = @JoinColumn(name = "courses_id")
             , inverseJoinColumns = @JoinColumn(name = "groups_id"))
     private List<Group> groups;
 
     @OneToOne(cascade = {CascadeType.ALL},mappedBy = "course")
     private Teacher teacher;
-
-
 }
